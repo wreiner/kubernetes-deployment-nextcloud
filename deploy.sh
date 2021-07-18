@@ -5,4 +5,4 @@ kubectl apply -f mariadb-pv.yml -f mariadb-pvc.yml
 kubectl apply -f nextcloud-pv.yml -f nextcloud-pvc.yml
 
 bash deploy-mariadb.sh
-deploy-nextcloud.sh
+bash deploy-nextcloud.sh
