@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nextcloud-mariadb-data-pv
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  claimRef:
+    name: nextcloud-mariadb-data-pvc
+    namespace: nextcloud
+  hostPath:
+    path: /var/lib/k8s/volumes/nextcloud-mariadb-data-pv

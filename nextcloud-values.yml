@@ -1,0 +1,70 @@
+nextcloud:
+  host: devcloud.wreiner.at
+  username: admin
+  password: changeme
+  mail:
+    enabled: false
+    fromAddress: user
+    domain: domain.com
+    smtp:
+      host: domain.com
+      secure: ssl
+      port: 465
+      authtype: LOGIN
+      name: user
+      password: pass
+
+internalDatabase:
+  enabled: false
+
+## External database configuration
+##
+externalDatabase:
+  enabled: true
+
+  ## Supported database engines: mysql or postgresql
+  type: mysql
+
+  ## Database host
+  host: nextcloud-mariadb
+
+  ## Database user
+  user: nextcloud
+
+  ## Database password
+  password: nextcloud
+
+  ## Database name
+  database: nextcloud
+
+redis:
+  enabled: false
+  usePassword: true
+  password: 'changeme'
+
+service:
+  type: NodePort
+  port: 8080
+  nodePort: 30808
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  # Nextcloud Data (/var/www/html)
+  enabled: true
+  existingClaim: "nextcloud-data-pvc"
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+## Prometheus Exporter / Metrics
+##
+metrics:
+  enabled: true
+
+# rbac:
+#   enabled: false
+#   serviceaccount:
+#     create: true
+#     name: nextcloud-serviceaccount
+
